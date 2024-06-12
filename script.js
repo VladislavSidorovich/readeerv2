@@ -163,6 +163,9 @@ App.prototype.doBook = function (url, opts) {
             }
         });
 
+
+        /*
+
         const updateLinks = (document) => {
             const links = document.querySelectorAll("a");
             const newHref = "https://www.mmass.pro/";
@@ -194,7 +197,7 @@ App.prototype.doBook = function (url, opts) {
                 });
             });
         });
-        
+        */
 
         const fixedSearchValue1 = "(1)";
         const fixedSearchValue2 = "(2)";
