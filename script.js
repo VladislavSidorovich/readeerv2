@@ -1085,18 +1085,18 @@ App.prototype.doSearchall = function (q) {
     });
 };
 
-App.prototype.doSearch1 = App.prototype.doSearch;
-App.prototype.doSearch2 = App.prototype.doSearch;
-App.prototype.doSearch3 = App.prototype.doSearch;
-App.prototype.doSearch4 = App.prototype.doSearch;
-App.prototype.doSearch5 = App.prototype.doSearch;
-App.prototype.doSearch6 = App.prototype.doSearch;
-App.prototype.doSearch7 = App.prototype.doSearch;
-App.prototype.doSearch8 = App.prototype.doSearch;
-App.prototype.doSearch9 = App.prototype.doSearch;
-App.prototype.doSearch10 = App.prototype.doSearch;
-App.prototype.doSearch11 = App.prototype.doSearch;
-App.prototype.doSearch12 = App.prototype.doSearch;
+App.prototype.doSearch1 = App.prototype.doSearchall;
+App.prototype.doSearch2 = App.prototype.doSearchall;
+App.prototype.doSearch3 = App.prototype.doSearchall;
+App.prototype.doSearch4 = App.prototype.doSearchall;
+App.prototype.doSearch5 = App.prototype.doSearchall;
+App.prototype.doSearch6 = App.prototype.doSearchall;
+App.prototype.doSearch7 = App.prototype.doSearchall;
+App.prototype.doSearch8 = App.prototype.doSearchall;
+App.prototype.doSearch9 = App.prototype.doSearchall;
+App.prototype.doSearch10 = App.prototype.doSearchall;
+App.prototype.doSearch11 = App.prototype.doSearchall;
+App.prototype.doSearch12 = App.prototype.doSearchall;
 
 
 App.prototype.onSearchClick1 = function (searchTerm) {
