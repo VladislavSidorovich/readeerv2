@@ -1032,7 +1032,7 @@ App.prototype.doSearch12 = function (q) {
         });
     })).then(results => Promise.resolve([].concat.apply([], results)));
 };
-
+/*
 App.prototype.doSearch13 = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(item => {
         return item.load(this.state.book.load.bind(this.state.book)).then(doc => {
@@ -1052,6 +1052,7 @@ App.prototype.doSearch14 = function (q) {
         });
     })).then(results => Promise.resolve([].concat.apply([], results)));
 };
+*/
 
 App.prototype.onSearchClick1 = function (searchTerm) {
     this.doSearch1(searchTerm).then(results => {
@@ -1258,7 +1259,7 @@ App.prototype.onSearchClick12 = function (searchTerm) {
         });
     }).catch(err => this.fatal("error searching book", err));
 };
-
+/*
 App.prototype.onSearchClick13 = function (searchTerm) {
     this.doSearch13(searchTerm).then(results => {
         const container = this.qs(".setting-content13");
@@ -1275,6 +1276,7 @@ App.prototype.onSearchClick13 = function (searchTerm) {
         });
     }).catch(err => this.fatal("error searching book", err));
 };
+*/
 /*
 
 App.prototype.onSearchClick14 = function (searchTerm) {
