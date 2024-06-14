@@ -912,7 +912,7 @@ App.prototype.goToChapter = function(chapterName) {
 */
 
 
-
+/*
 App.prototype.doSearch1 = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(item => {
         return item.load(this.state.book.load.bind(this.state.book)).then(doc => {
@@ -1054,8 +1054,40 @@ App.prototype.doSearch14 = function (q) {
 };
 */
 
+App.prototype.doSearchall = function (q) {
+    return Promise.all(this.state.book.spine.spineItems.map(async (item) => {
+        try {
+            if (!item) {
+                console.error("Item is undefined");
+                return [];
+            }
+            
+            const doc = await item.load(this.state.book.load.bind(this.state.book));
+            
+            if (!doc) {
+                console.error("Document is undefined for item", item);
+                return [];
+            }
+
+            let results = item.find(q);
+            item.unload();
+
+            return results;
+        } catch (error) {
+            console.error("Error processing item", item, error);
+            return [];
+        }
+    })).then(results => {
+        return Promise.resolve([].concat.apply([], results));
+    }).catch(error => {
+        console.error("Error in doSearch", error);
+        return Promise.reject(error);
+    });
+};
+
+
 App.prototype.onSearchClick1 = function (searchTerm) {
-    this.doSearch1(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content1");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1072,7 +1104,7 @@ App.prototype.onSearchClick1 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick2 = function (searchTerm) {
-    this.doSearch2(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content2");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1106,7 +1138,7 @@ App.prototype.onSearchClick3 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick4 = function (searchTerm) {
-    this.doSearch4(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content4");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1123,7 +1155,7 @@ App.prototype.onSearchClick4 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick5 = function (searchTerm) {
-    this.doSearch5(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content5");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1140,7 +1172,7 @@ App.prototype.onSearchClick5 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick6 = function (searchTerm) {
-    this.doSearch6(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content6");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1159,7 +1191,7 @@ App.prototype.onSearchClick6 = function (searchTerm) {
 
 
 App.prototype.onSearchClick7 = function (searchTerm) {
-    this.doSearch7(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content7");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1176,7 +1208,7 @@ App.prototype.onSearchClick7 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick8 = function (searchTerm) {
-    this.doSearch8(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content8");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1193,7 +1225,7 @@ App.prototype.onSearchClick8 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick9 = function (searchTerm) {
-    this.doSearch9(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content9");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1210,7 +1242,7 @@ App.prototype.onSearchClick9 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick10 = function (searchTerm) {
-    this.doSearch10(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content10");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1227,7 +1259,7 @@ App.prototype.onSearchClick10 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick11 = function (searchTerm) {
-    this.doSearch11(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content11");
         container.innerHTML = ""; // Очистка контейнера
 
@@ -1244,7 +1276,7 @@ App.prototype.onSearchClick11 = function (searchTerm) {
 };
 
 App.prototype.onSearchClick12 = function (searchTerm) {
-    this.doSearch12(searchTerm).then(results => {
+    this.doSearchall(searchTerm).then(results => {
         const container = this.qs(".setting-content12");
         container.innerHTML = ""; // Очистка контейнера
 
