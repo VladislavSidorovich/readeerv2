@@ -99,14 +99,19 @@ let App = function (el) {
 
 // Метод для навигации по CFI
 App.prototype.navigateToCFI = function (cfi) {
-    if (this.state.book && typeof this.state.book.goto === 'function') {
-        this.state.book.goto(cfi).then(() => {
-            console.log(`Navigated to ${cfi}`);
-        }).catch(err => {
-            console.error(`Error navigating to ${cfi}`, err);
-        });
+    if (this.state.book) {
+        console.log('this.state.book is initialized:', this.state.book);
+        if (typeof this.state.book.goto === 'function') {
+            this.state.book.goto(cfi).then(() => {
+                console.log(`Navigated to ${cfi}`);
+            }).catch(err => {
+                console.error(`Error navigating to ${cfi}`, err);
+            });
+        } else {
+            console.error('this.state.book.goto is not a function');
+        }
     } else {
-        console.error('this.state.book.gotoCfi is not a function or this.state.book is not initialized');
+        console.error('this.state.book is not initialized');
     }
 };
 
@@ -132,6 +137,7 @@ App.prototype.addCFIEventListeners = function () {
         });
     });
 };
+
 
 App.prototype.doBook = function (url, opts) {
     this.qs(".book").innerHTML = "Loading";
