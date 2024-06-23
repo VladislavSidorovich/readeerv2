@@ -99,11 +99,15 @@ let App = function (el) {
 
 // Метод для навигации по CFI
 App.prototype.navigateToCFI = function (cfi) {
-    this.state.book.gotoCfi(cfi).then(() => {
-        console.log(`Navigated to ${cfi}`);
-    }).catch(err => {
-        console.error(`Error navigating to ${cfi}`, err);
-    });
+    if (this.state.book && typeof this.state.book.gotoCfi === 'function') {
+        this.state.book.gotoCfi(cfi).then(() => {
+            console.log(`Navigated to ${cfi}`);
+        }).catch(err => {
+            console.error(`Error navigating to ${cfi}`, err);
+        });
+    } else {
+        console.error('this.state.book.gotoCfi is not a function or this.state.book is not initialized');
+    }
 };
 
 // Метод для добавления обработчиков событий к ссылкам
