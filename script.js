@@ -211,8 +211,6 @@ App.prototype.doBook = function (url, opts) {
         const fixedSearchValue10 = "(10)";
         const fixedSearchValue11 = "(11)";
         const fixedSearchValue12 = "(12)";
-        const fixedSearchValue13 = "(13)";
-        const fixedSearchValue14 = "(14)";
 
 
 
@@ -228,8 +226,6 @@ App.prototype.doBook = function (url, opts) {
         this.onSearchClick10(fixedSearchValue10);
         this.onSearchClick11(fixedSearchValue11);
         this.onSearchClick12(fixedSearchValue12);
-        this.onSearchClick13(fixedSearchValue13);
-        this.onSearchClick14(fixedSearchValue14);
 
 
 /*
