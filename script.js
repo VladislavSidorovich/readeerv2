@@ -232,7 +232,7 @@ App.prototype.doBook = function (url, opts) {
             });
         });
         */
-/*
+
         const fixedSearchValue1 = "(1)";
         const fixedSearchValue2 = "(2)";
         const fixedSearchValue3 = "(3)";
@@ -260,7 +260,7 @@ App.prototype.doBook = function (url, opts) {
         this.onSearchClick10(fixedSearchValue10);
         this.onSearchClick11(fixedSearchValue11);
         this.onSearchClick12(fixedSearchValue12);
-*/
+
 
 /*
         const updateLinks = (document) => {
@@ -1084,7 +1084,7 @@ App.prototype.doSearch14 = function (q) {
 };
 */
 
-/*
+
 App.prototype.doSearchall = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(async (item) => {
         try {
@@ -1137,7 +1137,7 @@ App.prototype.doSearch10 = App.prototype.doSearchall;
 App.prototype.doSearch11 = App.prototype.doSearchall;
 App.prototype.doSearch12 = App.prototype.doSearchall;
 
-/*
+
 App.prototype.onSearchClick1 = function (searchTerm) {
     this.doSearch1(searchTerm).then(results => {
         const container = this.qs(".setting-content1");
@@ -1344,7 +1344,7 @@ App.prototype.onSearchClick12 = function (searchTerm) {
     }).catch(err => this.fatal("error searching book", err));
 };
 
-*/
+
 
 
 
