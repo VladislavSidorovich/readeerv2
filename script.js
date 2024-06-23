@@ -1050,6 +1050,7 @@ App.prototype.doSearch14 = function (q) {
 };
 */
 
+
 App.prototype.doSearchall = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(async (item) => {
         try {
@@ -1057,7 +1058,7 @@ App.prototype.doSearchall = function (q) {
                 console.error("Item is undefined");
                 return [];
             }
-            
+
             const doc = await item.load(this.state.book.load.bind(this.state.book));
             
             if (!doc) {
@@ -1065,22 +1066,22 @@ App.prototype.doSearchall = function (q) {
                 return [];
             }
 
-            let results = item.find(q);
+            const results = item.find(q);
             item.unload();
-
+            
             return results;
         } catch (error) {
             console.error("Error processing item", item, error);
             return [];
         }
     })).then(results => {
-        return Promise.resolve([].concat.apply([], results));
+        return [].concat(...results);
     }).catch(error => {
-        console.error("Error in doSearch", error);
+        console.error("Error in doSearchall", error);
         return Promise.reject(error);
     });
-};
 
+    
 App.prototype.doSearch1 = App.prototype.doSearchall;
 App.prototype.doSearch2 = App.prototype.doSearchall;
 App.prototype.doSearch3 = App.prototype.doSearchall;
