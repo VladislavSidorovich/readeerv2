@@ -99,8 +99,8 @@ let App = function (el) {
 
 // Метод для навигации по CFI
 App.prototype.navigateToCFI = function (cfi) {
-    if (this.state.book && typeof this.state.book.gotoCfi === 'function') {
-        this.state.book.gotoCfi(cfi).then(() => {
+    if (this.state.book && typeof this.state.book.goto === 'function') {
+        this.state.book.goto(cfi).then(() => {
             console.log(`Navigated to ${cfi}`);
         }).catch(err => {
             console.error(`Error navigating to ${cfi}`, err);
