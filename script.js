@@ -1109,7 +1109,7 @@ App.prototype.onSearchClick1 = function (searchTerm) {
         const container = this.qs(".setting-content1");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
@@ -1126,7 +1126,7 @@ App.prototype.onSearchClick2 = function (searchTerm) {
         const container = this.qs(".setting-content2");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
@@ -1143,7 +1143,7 @@ App.prototype.onSearchClick3 = function (searchTerm) {
         const container = this.qs(".setting-content3");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
