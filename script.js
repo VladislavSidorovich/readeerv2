@@ -305,13 +305,12 @@ App.prototype.doBook = function (url, opts) {
     
 
 
-        
+        */
 
     }).catch(error => {
         console.error("Failed to load book", error.message);
     });
 };
-   */
 
 App.prototype.loadSettingsFromStorage = function () {
     ["font-size"].forEach(container => this.restoreChipActive(container));
