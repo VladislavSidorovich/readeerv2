@@ -198,7 +198,7 @@ App.prototype.doBook = function (url, opts) {
             });
         });
         */
-
+/*
         const fixedSearchValue1 = "(1)";
         const fixedSearchValue2 = "(2)";
         const fixedSearchValue3 = "(3)";
@@ -226,7 +226,7 @@ App.prototype.doBook = function (url, opts) {
         this.onSearchClick10(fixedSearchValue10);
         this.onSearchClick11(fixedSearchValue11);
         this.onSearchClick12(fixedSearchValue12);
-
+*/
 
 /*
         const updateLinks = (document) => {
@@ -1050,7 +1050,7 @@ App.prototype.doSearch14 = function (q) {
 };
 */
 
-
+/*
 App.prototype.doSearchall = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(async (item) => {
         try {
