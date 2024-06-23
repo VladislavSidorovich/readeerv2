@@ -918,7 +918,7 @@ App.prototype.doSearch1 = function (q) {
         });
     })).then(results => Promise.resolve([].concat.apply([], results)));
 };
-*/
+
 App.prototype.doSearch2 = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(item => {
         return item.load(this.state.book.load.bind(this.state.book)).then(doc => {
@@ -1091,11 +1091,11 @@ App.prototype.doSearchall = function (q) {
 };
     
 App.prototype.doSearch1 = App.prototype.doSearchall;
-/*App.prototype.doSearch2 = App.prototype.doSearchall;
+App.prototype.doSearch2 = App.prototype.doSearchall;
 App.prototype.doSearch3 = App.prototype.doSearchall;
 App.prototype.doSearch4 = App.prototype.doSearchall;
 App.prototype.doSearch5 = App.prototype.doSearchall;
-App.prototype.doSearch6 = App.prototype.doSearchall;*/
+App.prototype.doSearch6 = App.prototype.doSearchall;
 App.prototype.doSearch7 = App.prototype.doSearchall;
 App.prototype.doSearch8 = App.prototype.doSearchall;
 App.prototype.doSearch9 = App.prototype.doSearchall;
