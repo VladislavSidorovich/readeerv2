@@ -97,21 +97,16 @@ let App = function (el) {
     this.addCFIEventListeners();
 };
 
-// Метод для навигации по CFI
 App.prototype.navigateToCFI = function (cfi) {
-    if (this.state.book) {
+    if (this.state.book && this.rendition) {
         console.log('this.state.book is initialized:', this.state.book);
-        if (typeof this.state.book.goto === 'function') {
-            this.state.book.goto(cfi).then(() => {
-                console.log(`Navigated to ${cfi}`);
-            }).catch(err => {
-                console.error(`Error navigating to ${cfi}`, err);
-            });
-        } else {
-            console.error('this.state.book.goto is not a function');
-        }
+        this.rendition.display(cfi).then(() => {
+            console.log(`Navigated to ${cfi}`);
+        }).catch(err => {
+            console.error(`Error navigating to ${cfi}`, err);
+        });
     } else {
-        console.error('this.state.book is not initialized');
+        console.error('this.state.book or rendition is not initialized');
     }
 };
 
@@ -137,7 +132,6 @@ App.prototype.addCFIEventListeners = function () {
         });
     });
 };
-
 
 App.prototype.doBook = function (url, opts) {
     this.qs(".book").innerHTML = "Loading";
