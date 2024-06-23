@@ -1080,7 +1080,7 @@ App.prototype.doSearchall = function (q) {
         console.error("Error in doSearchall", error);
         return Promise.reject(error);
     });
-
+};
     
 App.prototype.doSearch1 = App.prototype.doSearchall;
 App.prototype.doSearch2 = App.prototype.doSearchall;
@@ -1118,7 +1118,7 @@ App.prototype.onSearchClick2 = function (searchTerm) {
         const container = this.qs(".setting-content2");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 200).forEach(result => {
+        results.slice(0, 20).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
