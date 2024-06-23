@@ -918,7 +918,7 @@ App.prototype.doSearch1 = function (q) {
         });
     })).then(results => Promise.resolve([].concat.apply([], results)));
 };
-
+*/
 App.prototype.doSearch2 = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(item => {
         return item.load(this.state.book.load.bind(this.state.book)).then(doc => {
@@ -968,7 +968,7 @@ App.prototype.doSearch6 = function (q) {
         });
     })).then(results => Promise.resolve([].concat.apply([], results)));
 };
-
+/*
 App.prototype.doSearch7 = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(item => {
         return item.load(this.state.book.load.bind(this.state.book)).then(doc => {
@@ -1091,11 +1091,11 @@ App.prototype.doSearchall = function (q) {
 };
     
 App.prototype.doSearch1 = App.prototype.doSearchall;
-App.prototype.doSearch2 = App.prototype.doSearchall;
+/*App.prototype.doSearch2 = App.prototype.doSearchall;
 App.prototype.doSearch3 = App.prototype.doSearchall;
 App.prototype.doSearch4 = App.prototype.doSearchall;
 App.prototype.doSearch5 = App.prototype.doSearchall;
-App.prototype.doSearch6 = App.prototype.doSearchall;
+App.prototype.doSearch6 = App.prototype.doSearchall;*/
 App.prototype.doSearch7 = App.prototype.doSearchall;
 App.prototype.doSearch8 = App.prototype.doSearchall;
 App.prototype.doSearch9 = App.prototype.doSearchall;
@@ -1160,7 +1160,7 @@ App.prototype.onSearchClick4 = function (searchTerm) {
         const container = this.qs(".setting-content4");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
@@ -1194,7 +1194,7 @@ App.prototype.onSearchClick6 = function (searchTerm) {
         const container = this.qs(".setting-content6");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
@@ -1213,7 +1213,7 @@ App.prototype.onSearchClick7 = function (searchTerm) {
         const container = this.qs(".setting-content7");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
@@ -1230,7 +1230,7 @@ App.prototype.onSearchClick8 = function (searchTerm) {
         const container = this.qs(".setting-content8");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
@@ -1247,7 +1247,7 @@ App.prototype.onSearchClick9 = function (searchTerm) {
         const container = this.qs(".setting-content9");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
@@ -1264,7 +1264,7 @@ App.prototype.onSearchClick10 = function (searchTerm) {
         const container = this.qs(".setting-content10");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
@@ -1281,7 +1281,7 @@ App.prototype.onSearchClick11 = function (searchTerm) {
         const container = this.qs(".setting-content11");
         container.innerHTML = ""; // Очистка контейнера
 
-        results.slice(0, 20).forEach(result => {
+        results.slice(0, 10).forEach(result => {
             let resultEl = document.createElement("div");
             resultEl.className = "search-result";
             resultEl.innerHTML = `
