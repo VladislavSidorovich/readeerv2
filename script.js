@@ -34,7 +34,8 @@ let App = function (el) {
     this.ael = el;
     this.state = {};
     this.doReset();
-
+    this.addCFIEventListeners();
+    
     document.body.addEventListener("keyup", this.onKeyUp.bind(this));
 
     this.qsa(".tab-list .item").forEach(el => el.addEventListener("click", this.onTabClick.bind(this, el.dataset.tab)));
@@ -1323,244 +1324,27 @@ App.prototype.onSearchClick12 = function (searchTerm) {
 */
 
 
-App.prototype.onSearchClick1 = function (searchTerm) {
-    this.doSearch1(searchTerm).then(results => {
-        const container = this.qs(".setting-content1");
-        container.innerHTML = ""; // Очистка контейнера
+// Метод для добавления обработчиков событий к ссылкам
+App.prototype.addCFIEventListeners = function () {
+    // Находим все ссылки с классом .result-link
+    const links = document.querySelectorAll('.result-link');
 
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
+    links.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Останавливаем стандартное поведение ссылки
+
+            // Извлекаем CFI из href атрибута
+            const href = link.getAttribute('href');
+            const cfiMatch = href.match(/epubcfi\((.*?)\)/);
+            
+            if (cfiMatch && cfiMatch[1]) {
+                const cfi = cfiMatch[1];
+                this.navigateToCFI(cfi); // Переходим по CFI
             } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
+                console.error('Invalid CFI format in href attribute:', href);
             }
         });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick2 = function (searchTerm) {
-    this.doSearch2(searchTerm).then(results => {
-        const container = this.qs(".setting-content2");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick3 = function (searchTerm) {
-    this.doSearch3(searchTerm).then(results => {
-        const container = this.qs(".setting-content3");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick4 = function (searchTerm) {
-    this.doSearch4(searchTerm).then(results => {
-        const container = this.qs(".setting-content4");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick5 = function (searchTerm) {
-    this.doSearch5(searchTerm).then(results => {
-        const container = this.qs(".setting-content5");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick6 = function (searchTerm) {
-    this.doSearch6(searchTerm).then(results => {
-        const container = this.qs(".setting-content6");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick7 = function (searchTerm) {
-    this.doSearch7(searchTerm).then(results => {
-        const container = this.qs(".setting-content7");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick8 = function (searchTerm) {
-    this.doSearch8(searchTerm).then(results => {
-        const container = this.qs(".setting-content8");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick9 = function (searchTerm) {
-    this.doSearch9(searchTerm).then(results => {
-        const container = this.qs(".setting-content9");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick10 = function (searchTerm) {
-    this.doSearch10(searchTerm).then(results => {
-        const container = this.qs(".setting-content10");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick11 = function (searchTerm) {
-    this.doSearch11(searchTerm).then(results => {
-        const container = this.qs(".setting-content11");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
-};
-
-App.prototype.onSearchClick12 = function (searchTerm) {
-    this.doSearch12(searchTerm).then(results => {
-        const container = this.qs(".setting-content12");
-        container.innerHTML = ""; // Очистка контейнера
-
-        results.slice(0, 10).forEach(result => {
-            const link = container.querySelector(`.result-link[href="${result.cfi}"]`);
-            if (link) {
-                link.innerHTML = result.excerpt.trim();
-                link.addEventListener("click", (event) => {
-                    event.preventDefault(); // Останавливаем стандартное поведение ссылки
-                    this.navigateToCFI(result.cfi); // Переходим по CFI
-                });
-            } else {
-                console.warn(`Link with href "${result.cfi}" not found in the container.`);
-            }
-        });
-    }).catch(err => this.fatal("error searching book", err));
+    });
 };
 
 
