@@ -34,7 +34,6 @@ let App = function (el) {
     this.ael = el;
     this.state = {};
     this.doReset();
-    this.addCFIEventListeners();
     
     document.body.addEventListener("keyup", this.onKeyUp.bind(this));
 
@@ -94,6 +93,40 @@ let App = function (el) {
         throw err;
     }
     this.applyTheme();
+
+    this.addCFIEventListeners();
+};
+
+// Метод для навигации по CFI
+App.prototype.navigateToCFI = function (cfi) {
+    this.state.book.gotoCfi(cfi).then(() => {
+        console.log(`Navigated to ${cfi}`);
+    }).catch(err => {
+        console.error(`Error navigating to ${cfi}`, err);
+    });
+};
+
+// Метод для добавления обработчиков событий к ссылкам
+App.prototype.addCFIEventListeners = function () {
+    // Находим все ссылки с классом .result-link
+    const links = document.querySelectorAll('.result-link');
+
+    links.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Останавливаем стандартное поведение ссылки
+
+            // Извлекаем CFI из href атрибута
+            const href = link.getAttribute('href');
+            const cfiMatch = href.match(/epubcfi\((.*?)\)/);
+            
+            if (cfiMatch && cfiMatch[1]) {
+                const cfi = cfiMatch[1];
+                this.navigateToCFI(cfi); // Переходим по CFI
+            } else {
+                console.error('Invalid CFI format in href attribute:', href);
+            }
+        });
+    });
 };
 
 App.prototype.doBook = function (url, opts) {
@@ -269,7 +302,7 @@ App.prototype.doBook = function (url, opts) {
             });
         });
 
-       */
+    
 
 
         
@@ -278,7 +311,7 @@ App.prototype.doBook = function (url, opts) {
         console.error("Failed to load book", error.message);
     });
 };
-
+   */
 
 App.prototype.loadSettingsFromStorage = function () {
     ["font-size"].forEach(container => this.restoreChipActive(container));
@@ -856,15 +889,6 @@ try {
     } catch (err) {}
 }
 
-App.prototype.navigateToCFI = function (cfi) {
-    // Предположим, у вас есть метод в вашей книге, который может обрабатывать переход по CFI
-    this.state.book.gotoCfi(cfi).then(() => {
-        console.log(`Navigated to ${cfi}`);
-    }).catch(err => {
-        console.error(`Error navigating to ${cfi}`, err);
-    });
-};
-
 
 
 /*
@@ -1061,7 +1085,7 @@ App.prototype.doSearch14 = function (q) {
 };
 */
 
-
+/*
 App.prototype.doSearchall = function (q) {
     return Promise.all(this.state.book.spine.spineItems.map(async (item) => {
         try {
@@ -1324,28 +1348,6 @@ App.prototype.onSearchClick12 = function (searchTerm) {
 */
 
 
-// Метод для добавления обработчиков событий к ссылкам
-App.prototype.addCFIEventListeners = function () {
-    // Находим все ссылки с классом .result-link
-    const links = document.querySelectorAll('.result-link');
-
-    links.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault(); // Останавливаем стандартное поведение ссылки
-
-            // Извлекаем CFI из href атрибута
-            const href = link.getAttribute('href');
-            const cfiMatch = href.match(/epubcfi\((.*?)\)/);
-            
-            if (cfiMatch && cfiMatch[1]) {
-                const cfi = cfiMatch[1];
-                this.navigateToCFI(cfi); // Переходим по CFI
-            } else {
-                console.error('Invalid CFI format in href attribute:', href);
-            }
-        });
-    });
-};
 
 
 /*
