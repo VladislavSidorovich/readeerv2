@@ -100,7 +100,7 @@ let App = function (el) {
 App.prototype.navigateToCFI = function (cfi) {
         this.state.rendition.display(cfi).then(() => {
             console.log(`Navigated to ${cfi}`);
-        }
+        )}
  
 };
 
