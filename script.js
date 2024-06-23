@@ -98,16 +98,10 @@ let App = function (el) {
 };
 
 App.prototype.navigateToCFI = function (cfi) {
-    if (this.state.book && this.rendition) {
-        console.log('this.state.book is initialized:', this.state.book);
         this.rendition.display(cfi).then(() => {
             console.log(`Navigated to ${cfi}`);
-        }).catch(err => {
-            console.error(`Error navigating to ${cfi}`, err);
-        });
-    } else {
-        console.error('this.state.book or rendition is not initialized');
-    }
+        }
+ 
 };
 
 // Метод для добавления обработчиков событий к ссылкам
